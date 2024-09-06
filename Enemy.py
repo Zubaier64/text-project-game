@@ -1,7 +1,7 @@
 class Enemy:
     def __init__(self):
         self.name = "Not set"
-        self.base_HP = 2
+        self.base_HP = 20
         self.HP = 0
         self.base_ATK = 5
         self.ATK = 0

@@ -1,5 +1,5 @@
 from Manager import Manager
-from Player import  *
+from Player import *
 from Menu import *
 from Battle import *
 from Spawner import *
@@ -15,7 +15,7 @@ def get_player_name() -> str:
     return result
 
 def main():
-    player = Player("Zubair")#get_player_name())
+    player = Player("Zubair")  # get_player_name())
     menu = Menu()
     battle = Battle()
     spawner = Spawner()

@@ -1,4 +1,3 @@
-
 from Player import Player
 from Menu import Menu
 from Battle import Battle
@@ -11,7 +10,12 @@ class Manager:
         self.battle = battle
         self.spawner = spawner
 
-        menu.show_stats(self.player)
-        battle.begin_battle(self.player, self.spawner.get_enemy())
-        pass
+        self.foo = True
 
+        self.game_loop()
+
+    def game_loop(self):
+        self.foo = False
+        
+        self.menu.show_stats(self.player)
+        self.battle.begin_battle(self.player, self.spawner.get_enemy())

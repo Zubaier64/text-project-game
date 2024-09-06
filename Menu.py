@@ -19,7 +19,7 @@ class Menu:
         print("2. flee")
 
         while True:
-            result = str(input("action: "))
+            result = str(input("> "))
             if result == "" or result == " ":
                 print("wrong input")
                 continue
@@ -31,5 +31,14 @@ class Menu:
     def take_final_action(self) -> str:
         self.foo = False
         result = ""
+
+        while True:
+            print("1. normal attack")
+            print("2. skill")
+            result = str(input("> "))
+            if result != "" or result != " ":
+                return result
+            else:
+                continue
 
         return result
