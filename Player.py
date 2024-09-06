@@ -1,5 +1,9 @@
+from Inventory import Inventory
+
 class Player:
     def __init__(self, name: str):
+        self.inventory = Inventory()
+        self.inventory.add_item("Potion")
 
         if name == "" or name == " ":
             print("cant set name as blank!")
@@ -20,3 +24,4 @@ class Player:
         self.HP = round(self.base_HP * self.level * 1.2, 1)
         self.ATK = round(self.base_ATK * self.level * 1.2, 1)
         self.DEF = round(self.base_DEF * self.level * 1.2, 1)
+

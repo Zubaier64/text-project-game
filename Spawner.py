@@ -12,7 +12,10 @@ class Spawner:
 
     def get_enemy(self) -> Enemy:
         self.foo = False
-        return self.enemy_list[self.index]
+        try:
+            return self.enemy_list[self.index]
+        except NameError:
+            print("out of Enemies")
 
     def fill_enemy_list(self):
         for i in range(10):

@@ -16,6 +16,12 @@ class Manager:
 
     def game_loop(self):
         self.foo = False
-        
-        self.menu.show_stats(self.player)
-        self.battle.begin_battle(self.player, self.spawner.get_enemy())
+        while True:
+            action = self.menu.take_travel_action(self.player)
+            self.menu.show_stats(self.player)
+            battle = self.battle.begin_battle(self.player, self.spawner.get_enemy())
+            if battle:
+                self.spawner.index += 1
+            if not action:
+                print("game over")
+                break

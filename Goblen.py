@@ -4,6 +4,7 @@ class Goblin (Enemy):
     def __init__(self):
         super().__init__()
         self.name = "Goblin"
+        self.drops = ["Club", "Cloth", "Shield"]
 
         self.set_stats()
 

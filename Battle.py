@@ -1,3 +1,5 @@
+from random import randint
+
 from Player import *
 from Enemy import *
 from Menu import *
@@ -7,7 +9,7 @@ class Battle:
         self.foo = True
         self.menu = Menu()
 
-    def begin_battle(self, player: Player, enemy: Enemy):
+    def begin_battle(self, player: Player, enemy: Enemy) -> bool:
         self.foo = False
 
         print(f"\n\tEnemy encounter {enemy.name}!")
@@ -17,7 +19,7 @@ class Battle:
         print(f"Attack: {enemy.ATK}")
         print(f"Defense: {enemy.DEF}")
 
-        while player.HP > 0 and enemy.HP > 0:
+        while True:
             action = self.menu.take_init_action()
             if action == "1":
                 print("\tBATTLE BEGIN")
@@ -31,7 +33,11 @@ class Battle:
 
                         if enemy.HP <= 0:
                             print(f"\t{enemy.name} defeated, {player.name} wins!")
-                            break
+                            drop_item = enemy.drops[randint(0, len(enemy.drops)-1)]
+                            print(f"{enemy.name} dropped {drop_item}, it's added to your Inventory")
+                            player.inventory.add_item(str(drop_item))
+                            return True
+
                         print(f"{enemy.name}'s HP = {round(enemy.HP, 1)}")
 
                         enemy_damage = self.calculate_damage(enemy, player)
@@ -40,7 +46,8 @@ class Battle:
 
                         if player.HP <= 0:
                             print(f"\t{player.name} defeated, {enemy.name} wins!")
-                            break
+                            return False
+
                         print(f"{player.name}'s HP = {round(player.HP, 1)}")
                         print("")
 
